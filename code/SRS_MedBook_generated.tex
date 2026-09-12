@@ -1,0 +1,264 @@
+% Auto-generated SRS in LaTeX format - Lab 03
+% Structure reference: ISO/IEC/IEEE 29148:2018
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\title{\textbf{Software Requirements Specification (SRS)\\MedBook -- Online Medical Appointment Booking System}}
+\author{MedBook Engineering Team}
+\date{Generated on: 2026-09-11 (v1.0 auto-generated)}
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\section{Introduction}
+\subsection{Purpose}
+This document specifies the software requirements for \textbf{MedBook} -- an online medical appointment booking platform serving patients, doctors, receptionists, and hospital administrators.
+
+\subsection{Scope}
+The system supports: doctor search, book/cancel/reschedule appointments, medical record management, safety warnings, insurance verification, and operational reporting.
+
+\subsection{Definitions, Acronyms, Abbreviations}
+\begin{longtable}{|l|p{12cm}|}
+\hline
+\textbf{Term / Acronym} & \textbf{Definition} \\ \hline
+\endhead
+AES & Advanced Encryption Standard - Symmetric encryption algorithm widely adopted to secure sensitive electronic data. \\ \hline
+API & Application Programming Interface - Set of subroutine definitions, protocols, and tools for building application software. \\ \hline
+CI & Continuous Integration - Practice of merging all developers' working copies to a shared mainline several times a day. \\ \hline
+FR & Functional Requirement - Specifies a function that a system or system component must be able to perform. \\ \hline
+NFR & Non-Functional Requirement - Specifies criteria that can be used to judge the operation of a system rather than specific behaviors. \\ \hline
+OTP & One-Time Password - A password that is valid for only one login session or transaction. \\ \hline
+RBAC & Role-Based Access Control - Access control mechanism based on roles assigned to users within an organization. \\ \hline
+RPO & Recovery Point Objective - Maximum acceptable amount of data loss measured in time. \\ \hline
+RTO & Recovery Time Objective - Maximum acceptable length of time that computer systems can be down. \\ \hline
+SH & Acronym identified from system requirements; definition established per system scope. \\ \hline
+SMS & Short Message Service - Text messaging service component of most telephone, internet, and mobile device systems. \\ \hline
+SRS & Software Requirements Specification - Comprehensive description of the intended purpose and environment for software under development. \\ \hline
+TLS & Transport Layer Security - Cryptographic protocol designed to provide communications security over a computer network. \\ \hline
+UC & Acronym identified from system requirements; definition established per system scope. \\ \hline
+UI & User Interface - Space where interactions between humans and machines occur. \\ \hline
+\end{longtable}
+
+\subsection{References}
+\begin{itemize}
+\item Karl Wiegers, Joy Beatty (2013), \textit{Software Requirements}, 3rd ed.
+\item ISO/IEC/IEEE 29148:2018 -- Requirements Engineering.
+\end{itemize}
+
+
+\section{Overall Description}
+\subsection{Product Perspective}
+MedBook is a web/mobile system connecting patients to healthcare providers, replacing the traditional phone-based booking process.
+
+\subsection{User Classes and Characteristics}
+\begin{longtable}{|l|l|p{9cm}|}
+\hline
+\textbf{ID} & \textbf{User Class} & \textbf{Primary Role / Benefit} \\ \hline
+\endhead
+SH-01 & Patient & Book appointments quickly, view history, receive reminders \\ \hline
+SH-02 & Doctor & Manage schedule, view medical records, drug interaction warnings \\ \hline
+SH-03 & Receptionist / Front desk staff & Confirm bookings, handle cancel/reschedule, assist walk-ins \\ \hline
+SH-04 & Hospital Administrator & Manage doctor/department catalog, operational reports, access control \\ \hline
+SH-05 & Health insurance provider & Verify insurance coverage, reconcile costs \\ \hline
+SH-06 & Hospital IT department & Maintenance, performance monitoring, data security \\ \hline
+SH-07 & Health regulatory authority & Compliance with health-data privacy and patient-safety regulations \\ \hline
+SH-08 & Development team & Correctly understand and implement requirements, control scope \\ \hline
+\end{longtable}
+
+\subsection{General Constraints}
+Must comply with personal health-data protection regulations; limited infrastructure budget for phase 1; 4-month delivery timeline.
+
+
+\section{Functional Requirements}
+\subsection{FR-001 -- Patient account registration and login}
+\begin{itemize}
+\item \textbf{Description}: The system shall allow patients to register via email/phone and verify via OTP.
+\item \textbf{Related stakeholder}: SH-01
+\item \textbf{Priority}: High
+\item \textbf{Status}: Proposed
+\item \textbf{Related use case}: UC-01
+\end{itemize}
+
+\subsection{FR-002 -- Search doctors by specialty/location}
+\begin{itemize}
+\item \textbf{Description}: The system shall allow searching doctors by specialty, name, rating, and location.
+\item \textbf{Related stakeholder}: SH-01
+\item \textbf{Priority}: High
+\item \textbf{Status}: Proposed
+\item \textbf{Related use case}: UC-02
+\end{itemize}
+
+\subsection{FR-003 -- Book an appointment online}
+\begin{itemize}
+\item \textbf{Description}: The system shall allow patients to select a doctor and an available time slot to book.
+\item \textbf{Related stakeholder}: SH-01
+\item \textbf{Priority}: High
+\item \textbf{Status}: Approved
+\item \textbf{Related use case}: UC-03
+\end{itemize}
+
+\subsection{FR-004 -- Cancel / reschedule an appointment}
+\begin{itemize}
+\item \textbf{Description}: The system shall allow patients to cancel or reschedule at least 2 hours in advance.
+\item \textbf{Related stakeholder}: SH-01
+\item \textbf{Priority}: High
+\item \textbf{Status}: Approved
+\item \textbf{Related use case}: UC-04
+\end{itemize}
+
+\subsection{FR-005 -- Receptionist confirms appointment}
+\begin{itemize}
+\item \textbf{Description}: The system shall allow the receptionist to confirm or reject a booking request.
+\item \textbf{Related stakeholder}: SH-03
+\item \textbf{Priority}: Medium
+\item \textbf{Status}: Proposed
+\item \textbf{Related use case}: UC-05
+\end{itemize}
+
+\subsection{FR-006 -- Appointment reminder via email/SMS}
+\begin{itemize}
+\item \textbf{Description}: The system shall automatically send reminders 24 hours and 1 hour in advance.
+\item \textbf{Related stakeholder}: SH-01
+\item \textbf{Priority}: Medium
+\item \textbf{Status}: Proposed
+\item \textbf{Related use case}: UC-06
+\end{itemize}
+
+\subsection{FR-007 -- Doctor views and updates medical records}
+\begin{itemize}
+\item \textbf{Description}: The system shall allow doctors to view visit history and record new results.
+\item \textbf{Related stakeholder}: SH-02
+\item \textbf{Priority}: High
+\item \textbf{Status}: Approved
+\item \textbf{Related use case}: UC-07
+\end{itemize}
+
+\subsection{FR-008 -- Drug interaction / allergy warning}
+\begin{itemize}
+\item \textbf{Description}: The system shall warn doctors when a prescription conflicts with a known allergy.
+\item \textbf{Related stakeholder}: SH-02
+\item \textbf{Priority}: High
+\item \textbf{Status}: Proposed
+\item \textbf{Related use case}: UC-08
+\end{itemize}
+
+\subsection{FR-009 -- Manage doctor and department catalog}
+\begin{itemize}
+\item \textbf{Description}: The system shall allow admins to add/edit/remove doctor and specialty records.
+\item \textbf{Related stakeholder}: SH-04
+\item \textbf{Priority}: Medium
+\item \textbf{Status}: Approved
+\item \textbf{Related use case}: UC-09
+\end{itemize}
+
+\subsection{FR-010 -- Visit statistics report}
+\begin{itemize}
+\item \textbf{Description}: The system shall export reports on booking/cancellation counts by day/month.
+\item \textbf{Related stakeholder}: SH-04
+\item \textbf{Priority}: Low
+\item \textbf{Status}: Proposed
+\item \textbf{Related use case}: UC-10
+\end{itemize}
+
+\subsection{FR-011 -- Verify health insurance coverage}
+\begin{itemize}
+\item \textbf{Description}: The system shall call a partner insurance API to check policy validity.
+\item \textbf{Related stakeholder}: SH-05
+\item \textbf{Priority}: Medium
+\item \textbf{Status}: Proposed
+\item \textbf{Related use case}: UC-11
+\end{itemize}
+
+\subsection{FR-012 -- Role-based access control (RBAC)}
+\begin{itemize}
+\item \textbf{Description}: The system shall restrict features by role: patient/doctor/receptionist/admin.
+\item \textbf{Related stakeholder}: SH-06
+\item \textbf{Priority}: High
+\item \textbf{Status}: Approved
+\item \textbf{Related use case}: UC-12
+\end{itemize}
+
+
+\section{Non-functional Requirements}
+\subsection{NFR-001 -- Performance (Performance)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: Doctor-search page response time $\le$ 2s with 500 concurrent users.
+\item \textbf{Verification method}: Load testing
+\item \textbf{Priority}: High
+\end{itemize}
+
+\subsection{NFR-002 -- Availability (Availability)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: The system shall achieve $\ge$ 99.5\% monthly uptime (excluding scheduled maintenance).
+\item \textbf{Verification method}: 30-day uptime monitoring
+\item \textbf{Priority}: High
+\end{itemize}
+
+\subsection{NFR-003 -- Security (Security)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: Medical record data shall be encrypted with AES-256 at rest and TLS 1.2+ in transit.
+\item \textbf{Verification method}: Configuration review + penetration test
+\item \textbf{Priority}: High
+\end{itemize}
+
+\subsection{NFR-004 -- Data privacy (Privacy/Compliance)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: The system shall follow data-minimization principles for personal data.
+\item \textbf{Verification method}: Compliance checklist review
+\item \textbf{Priority}: High
+\end{itemize}
+
+\subsection{NFR-005 -- Scalability (Scalability)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: The system shall handle 3x booking volume growth over 12 months without architecture changes.
+\item \textbf{Verification method}: Incremental load testing
+\item \textbf{Priority}: Medium
+\end{itemize}
+
+\subsection{NFR-006 -- Usability (Usability)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: A first-time user shall complete their first booking in $\le$ 3 minutes without guidance.
+\item \textbf{Verification method}: Usability testing
+\item \textbf{Priority}: Medium
+\end{itemize}
+
+\subsection{NFR-007 -- Safety (Safety)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: The system shall raise a conflict warning within $\le$ 1 second when a doctor double-booking is detected.
+\item \textbf{Verification method}: Booking-conflict scenario testing
+\item \textbf{Priority}: High
+\end{itemize}
+
+\subsection{NFR-008 -- Recoverability (Reliability)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: The system shall recover booking data within 15 minutes after an incident (RPO$\le$5min, RTO$\le$15min).
+\item \textbf{Verification method}: Disaster-recovery drill
+\item \textbf{Priority}: High
+\end{itemize}
+
+\subsection{NFR-009 -- Maintainability (Maintainability)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: Source code shall achieve $\ge$ 80\% unit-test coverage for the booking module.
+\item \textbf{Verification method}: CI coverage report
+\item \textbf{Priority}: Medium
+\end{itemize}
+
+\subsection{NFR-010 -- Compatibility (Compatibility/Portability)}
+\begin{itemize}
+\item \textbf{SMART measurement criterion}: The UI shall work correctly on Chrome, Safari, Edge versions released in the last 2 years.
+\item \textbf{Verification method}: Cross-browser testing
+\item \textbf{Priority}: Low
+\end{itemize}
+
+
+\section{Design Constraints}
+\begin{enumerate}
+\item \textbf{Technical Constraint}: The system must be developed using a RESTful microservices architecture, with all APIs communicating via JSON over HTTPS. The user interface must support responsive web design ensuring usability on mobile screens with a minimum viewport width of 360px. Electronic medical data integration must adhere to HL7/FHIR release 4 standards.
+\item \textbf{Legal and Regulatory Constraint}: The system and databases must be hosted on cloud infrastructure situated within data centers in Vietnam, strictly complying with Decree 13/2023/ND-CP on Personal Data Protection and the Vietnam Law on Medical Examination and Treatment (2023). All electronic medical records and PII (Personally Identifiable Information) must be encrypted using AES-256 at rest and TLS 1.3 in transit.
+\item \textbf{Timeline and Budget Constraint}: The MVP (Minimum Viable Product) release must be delivered within 4 months from project kickoff. Cloud infrastructure hosting costs for Phase 1 must not exceed the approved operational budget limit of 150 million VND per annum.
+\end{enumerate}
+
+\end{document}
