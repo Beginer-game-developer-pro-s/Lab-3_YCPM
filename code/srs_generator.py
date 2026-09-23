@@ -40,7 +40,7 @@ GLOSSARY_DEFINITIONS = {
     "CI": "Continuous Integration - Practice of merging all developers' working copies to a shared mainline several times a day.",
     "ISO": "International Organization for Standardization - Independent, non-governmental international standard development organization.",
     "SMART": "Specific, Measurable, Achievable, Relevant, Time-bound criteria for defining requirements/objectives.",
-    "BHYT": "Bảo hiểm Y tế (Social Health Insurance) - Vietnam national public healthcare insurance program.",
+    "BHYT": "Social Health Insurance (Bao Hiem Y Te) - Vietnam national public healthcare insurance program.",
     "ICD": "International Classification of Diseases - Globally recognized healthcare diagnostic classification system.",
     "HIS": "Hospital Information System - Comprehensive information system designed to manage all aspects of hospital operation.",
     "EMR": "Electronic Medical Record - Digital version of the traditional paper-based medical record for an individual patient."
